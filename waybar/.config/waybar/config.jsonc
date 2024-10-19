@@ -2,19 +2,120 @@
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
-  // "height": 30, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  // "spacing": 4, // Gaps between modules (4px)
+  "mod": "dock",
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-top": 7,
+  "margin-bottom": 0,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "reload_style_on_change": true,
+
   "modules-left": [
+    "custom/smallspacer",
     "hyprland/workspaces",
-    "hyprland/mode"
+    "custom/spacer",
+    "mpris"
   ],
   "modules-center": [
-    "hyprland/window"
+    "custom/padd",
+    "custom/l_end",
+    "custom/r_end",
+    "hyprland/window",
+    "custom/padd"
   ],
   "modules-right": [
-    "clock"
+    "custom/padd",
+    "custom/l_end",
+    "group/expand",
+    "network",
+    "group/expand-3",
+    "group/expand-2",
+    "group/expand-4",
+    "memory",
+    "cpu",
+    "clock",
+    "custom/notification",
+    "custom/padd"
   ],
+
+  "group/expand-4": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true,
+      "click-to-reveal": true,
+    },
+  },
+  "custom/smallspacer": {
+    "format": " ",
+  },
+  "memory": {
+    "interval": 1,
+    "rotate": 270,
+    "format": "{icon}",
+    "format-icons": [""],
+    "max-length": 10,
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "{icon}",
+    "rotate": 270,
+    "format-icons": [""],
+  },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "<span color='grey'>{status_icon} {dynamic}</span>",
+    "max-length": 50,
+    "player-icons": {
+      "default": "",
+      "mpv": "",
+    },
+    "status-icons": {
+      "paused": "",
+    },
+  },
+  "tray": {
+    "icon-size": 16,
+    "rotate": 0,
+    "spacing": 3,
+  },
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true,
+    },
+    "modules": ["custom/menu", "custom/spacer", "tray"],
+  },
+  "custom/menu": {
+    "format": "",
+    "rotate": 90,
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "",
+      "none": "",
+      "dnd-notification": "",
+      "dnd-none": "",
+      "inhibited-notification": "",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "",
+      "dnd-inhibited-none": "",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click-right": "swaync-client -d -sw",
+    "on-click": "swaync-client -t -sw",
+    "escape": true,
+  },
+
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -22,11 +123,33 @@
     },
   },
   "hyprland/window": {
-    "format": "{title}",
-    "max-length": 40,
-    "seperate-outputs": true
+    "format": "<span weight='bold'>{class}</span>",
+    "max-length": 120,
+    "icon": false,
+    "icon-size": 13,
   },
   "clock": {
-    "format-alt": "{:%a, %d. %b %H:%M}"
+    "format": "{:%I:%M %p}",
+    "rotate": 0,
+    "on-click": "/usr/local/bin/ags -t ActivityCenter",
+    "tooltip-format": "<tt>{calender}</tt>",
+    "calender": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
   }
 }

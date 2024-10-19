@@ -7,9 +7,9 @@
 }
 
 #waybar {
-  background: transparent;
+  background: @surface0;
   color: @text;
-  margin: 5px;
+  margin: 10px;
 }
 
 #workspaces {
