@@ -1,5 +1,8 @@
 // -*- mode: jsonc -*-
 {
+  //------------------------------
+  //General Setup
+  //------------------------------
   "layer": "top",
   "position": "top",
   "margin-left": 6,
@@ -9,6 +12,9 @@
   "spacing": 3,
   "reload_style_on_change": true,
 
+  //------------------------------
+  //Module Locations
+  //------------------------------
   "modules-left": [
     "hyprland/workspaces"
   ],
@@ -18,12 +24,16 @@
   "modules-right": [
     "clock"
   ],
+
+  //------------------------------
+  //Module Config
+  //------------------------------
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
       "default": "",
       "active": ""
-    },
+    }
   },
   "hyprland/window": {
     "format": "<span weight='bold'>{class}</span>",
@@ -32,7 +42,6 @@
     "icon-size": 13
   },
   "clock": {
-    "format": "{:%I:%M %p}",
-    "rotate": 0
+    "format": "{:%I:%M %p}"
   }
 }
