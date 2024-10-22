@@ -1,113 +1,48 @@
 @import "frappe.css";
 
 * {
-  font-family: monospace;
+  border: none;
+  border-radius: 6px;
+  font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
   font-size: 14px;
   min-height: 0;
 }
 
-#waybar {
-  background: @surface0;
+window#waybar {
+  background: @crust;
   color: @text;
-  margin: 10px;
 }
 
 #workspaces {
-  border-radius: 5px;
-  margin: 5px;
-  padding-left: 0px;
-  padding-right: 5px;
-  background-color: @surface0;
-  margin-left: 1rem;
+  background-color: @crust;
+  padding-left: 6px;
+  padding-right: 12px;
+  border: 6px;
+  border-radius: 6px;
 }
 
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
+  padding: 6px 6px;
+  background: transparent;
+  color: @text;
+  border-radius: 6px;
 }
 
 #workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
-}
-
-#workspaces button:hover {
   color: @sapphire;
-  border-radius: 1rem;
+  border-radius: 6px;
 }
 
 #window {
-  border-radius: 5px;
-  margin: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: @lavender;
-  background-color: @surface0;
-}
-
-#custom-music,
-#tray,
-#backlight,
-#clock,
-#battery,
-#pulseaudio,
-#custom-lock,
-#custom-power {
-  background-color: @surface0;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+  padding: 6px 12px;
+  color: @peach;
+  background-color: @crust;
+  border-radius: 6px;
 }
 
 #clock {
-  color: @blue;
-  border-radius: 5px;
-  margin-right: 1rem;
-}
-
-#battery {
-  color: @green;
-}
-
-#battery.charging {
-  color: @green;
-}
-
-#battery.warning:not(.charging) {
-  color: @red;
-}
-
-#backlight {
-  color: @yellow;
-}
-
-#backlight, #battery {
-    border-radius: 0;
-}
-
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
-}
-
-#custom-music {
+  padding: 6px 12px;
+  background-color: @crust;
   color: @mauve;
-  border-radius: 1rem;
-}
-
-#custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
-}
-
-#custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
-}
-
-#tray {
-  margin-right: 1rem;
-  border-radius: 1rem;
+  border-radius: 6px;
 }
