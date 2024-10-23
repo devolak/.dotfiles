@@ -24,7 +24,7 @@ window#waybar {
 #workspaces button {
   padding: 6px 6px;
   background: transparent;
-  color: @text;
+  color: @sapphire;
   border-radius: 6px;
 }
 
@@ -33,9 +33,13 @@ window#waybar {
   border-radius: 6px;
 }
 
+#workspaces button:hover {
+  box-shadow: none;
+  text-shadow: none;
+}
+
 #window {
-  padding: 6px 12px;
-  color: @peach;
+  color: @green;
   background-color: @crust;
   border-radius: 6px;
 }

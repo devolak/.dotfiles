@@ -36,7 +36,7 @@
     }
   },
   "hyprland/window": {
-    "format": "<span weight='bold'>{class}</span>",
+   "format": "<span weight='bold'>{class}</span>",
     "max-length": 120,
     "icon": false,
     "icon-size": 13
