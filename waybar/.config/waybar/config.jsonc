@@ -33,6 +33,9 @@
     "format-icons": {
       "default": "",
       "active": ""
+    },
+    "persistent-workspaces": {
+      "*": 5,
     }
   },
   "hyprland/window": {
@@ -42,6 +45,24 @@
     "icon-size": 13
   },
   "clock": {
-    "format": "{:%I:%M %p}"
+    "format": "{:%I:%M %p}",
+    "rotate": 0,
+    "format-alt": "{:R% %d-%m-%y}",
+    "tooltip": true,
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 4,
+      "format": {
+        "months": "<span color='#85c1dc'><b>{}</b></span>",
+        "weekdays": "<span color='#c6d0f5'><b>{}</b></span>",
+        "days": "<span color='#b5bfe2'>{}</span>",
+        "today": "<span color='#ca9ee6'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   }
 }
