@@ -22,6 +22,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "tray",
     "clock"
   ],
 
@@ -57,7 +58,7 @@
         "months": "<span color='#85c1dc'><b>{}</b></span>",
         "weekdays": "<span color='#c6d0f5'><b>{}</b></span>",
         "days": "<span color='#b5bfe2'>{}</span>",
-        "today": "<span color='#ca9ee6'><b><u>{}</u></b></span>"
+        "today": "<span color='#a6d189'><b><u>{}</u></b></span>"
       }
     },
     "actions": {
