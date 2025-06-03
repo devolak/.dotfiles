@@ -44,4 +44,16 @@ return {
       additional_vim_regex_highlighting = false,
     },
   },
+  config = function(_, opts)
+    vim.filetype.add {
+      extension = { rasi = "rasi" },
+      pattern = {
+        [".*/waybar/config"] = "jsonc",
+        [".*/mako/config"] = "dosini",
+        [".*/kitty/*.conf"] = "bash",
+        [".*/hypr/.*%.conf"] = "hyprlang",
+        [".*/hypr/themes/.*%.conf"] = "hyprlang",
+      },
+    }
+  end,
 }
