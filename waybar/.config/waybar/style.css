@@ -1,52 +1,105 @@
-@import "frappe.css";
+@import "gruvbox-material.css";
 
 * {
   border: none;
-  border-radius: 6px;
+  border-radius: 0px;
   font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
+  font-weight: bold;
   font-size: 14px;
-  min-height: 0;
+  min-height: 14px;
 }
 
 window#waybar {
-  background: @crust;
-  color: @text;
+  background: @waybar_bg;
+  border-radius: 3px;
 }
 
 #workspaces {
-  background-color: inherit;
-  padding-left: 6px;
-  padding-right: 12px;
-  border: 6px;
-  border-radius: 6px;
+  background: @workspaces_bg;
 }
 
 #workspaces button {
-  padding: 6px 6px;
-  background: transparent;
-  color: @sapphire;
-  border-radius: 6px;
+  color: @inactive_workspaces_text;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+  animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.active {
-  color: @sapphire;
-  border-radius: 6px;
+  background: @active_workspaces_bg;
+  color: @waybar_bg;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.3s linear;
 }
 
 #workspaces button:hover {
-  box-shadow: none;
-  text-shadow: none;
+  background: @hover_workspaces_bg;
+  color: @waybar_bg;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s linear;
 }
 
 #window {
-  color: @green;
+  color: @window_text;
   background-color: inherit;
   border-radius: 6px;
 }
 
 #clock {
+  color: @clock_text;
   padding: 6px 12px;
   background-color: inherit;
-  color: @yellow;
   border-radius: 6px;
+}
+
+#memory,
+#network,
+#custom-l_end,
+#custom-r_end {
+  color: @fg0;
+  background: @waybar_bg;
+  opacity: 1;
+  margin: 6px 0px 6px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+
+}
+
+#custom-l_end {
+  border-radius: 3px 0px 0px 3px;
+  margin-left: 9px;
+  padding-left: 3px;
+}
+
+#custom-r_end {
+  border-radius: 0px 3px 3px 0px;
+  margin-right: 9px;
+  padding-right: 3px;
+}
+
+#custom-small_r_end {
+  border-radius: 0px 3px 3px 0px;
+  margin-right: 3px;
+  padding-right: 0px;
+}
+
+#custom-seperator {
+  color: @waybar_text;
+  background: @waybar_bg;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
