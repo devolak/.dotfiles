@@ -5,3 +5,5 @@ font-feature = -calt, -liga, -dlig
 
 # Colorscheme
 theme = Kanagawa Wave
+
+gtk-titlebar = false
