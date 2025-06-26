@@ -1,9 +1,7 @@
 configuration {
-  modi: "drun,run"; 
-  show-icons: true;
+  modes: [ window, drun, run ];
+  show-icons: false;
   icon-theme: "Gruvbox-Plus-Dark";  
-  display-drun: "Applications";
-  display-run: "Run";
   drun-display-format: "{icon} {name}";
   sort: true;
   sorting-method: "fzf";

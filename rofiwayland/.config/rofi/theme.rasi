@@ -56,7 +56,7 @@ prompt {
 }
 
 entry {
-  placeholder: "Search with Gruvbox...";
+  placeholder: "Search...";
   placeholder-color: @fg3;
   padding: 8px;
   text-color: @fg0;
