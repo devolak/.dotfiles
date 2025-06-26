@@ -1,0 +1,10 @@
+configuration {
+  modes: [ window, drun, run ];
+  show-icons: false;
+  icon-theme: "Gruvbox-Plus-Dark";  
+  drun-display-format: "{icon} {name}";
+  sort: true;
+  sorting-method: "fzf";
+}
+
+@theme "theme"
