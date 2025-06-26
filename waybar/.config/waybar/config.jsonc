@@ -8,11 +8,11 @@
   "mod": "dock",
   "height": 32,
   "gtk-layer-shell": true,
-  "margin-left": 6,
-  "margin-right": 6,
-  "margin-top": 6,
-  "margin-bottom": 0,
-//  "spacing": 3,
+  //"margin-left": 6,
+  //"margin-right": 6,
+  //"margin-top": 6,
+  //"margin-bottom": 0,
+  //"spacing": 3,
   "reload_style_on_change": true,
 
   //------------------------------
