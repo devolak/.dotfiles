@@ -63,13 +63,13 @@
 
     "disable-scroll": true,
     "rotate": 0,
-    "all-outputs": true,
-    "active-only": false,
+    "all-outputs": false,
+    "active-only": true,
     "on-click": "activate",
     // "format": "{icon}",
-    "persistent-workspaces": {
-      "*": 4,
-    }
+    //"persistent-workspaces": {
+    //  "*": 4,
+    //}
     // "format-icons": {
     //   "focused": "",
     //   "default": ""
@@ -77,7 +77,7 @@
   },
 
   "hyprland/window": {
-    "format": "<span weight='bold'>{class}</span>",
+    "format": "<span weight='bold'>{title}</span>",
     "max-length": 120,
     "icon": false,
     "icon-size": 13,
