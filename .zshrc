@@ -9,39 +9,43 @@ function zcompile-many() {
 }
 
 # Clone and compile to wordcode missing plugins.
-if [[ ! -e ~/.local/share/zsh/zsh-syntax-highlighting ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.local/share/zsh/zsh-syntax-highlighting
-  zcompile-many ~/.local/share/zsh/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
-fi
-if [[ ! -e ~/.local/share/zsh/zsh-autosuggestions ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.local/share/zsh/zsh-autosuggestions
-  zcompile-many ~/.local/share/zsh/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
-fi
-if [[ ! -e ~/.local/share/zsh/powerlevel10k ]]; then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.local/share/zsh/powerlevel10k
-  make -C ~/.local/share/zsh/powerlevel10k pkg
-fi
-if [[ ! -e ~/.local/share/zsh/zsh-history-substring-search ]]; then
-  git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search.git ~/.local/share/zsh/zsh-history-substring-search
-  zcompile-many ~/.local/share/zsh/zsh-history-substring-search/{zsh-history-substring-search.zsh}
-fi
-if [[ ! -e ~/.local/share/zsh/fzf-tab ]]; then
-  git clone --depth=1 https://github.com/Aloxaf/fzf-tab.git ~/.local/share/zsh/fzf-tab
-  zcompile-many ~/.local/share/zsh/fzf-tab/{fzf-tab.zsh}
-fi
-if [[ ! -e /usr/share/fzf ]]; then
-  zcompile-many /usr/share/fzf/{completion.zsh,key-bindings.zsh}
-fi
+function () {
+  local data="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 
-# Activate Powerlevel10k Instant Prompt.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+  if [[ ! -e "$data/zsh-syntax-highlighting" ]]; then
+    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$data/zsh-syntax-highlighting"
+    zcompile-many "$data/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}"
+  fi
+  if [[ ! -e "$data/zsh-autosuggestions" ]]; then
+    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "$data/zsh-autosuggestions"
+    zcompile-many "$data/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}"
+  fi
+  if [[ ! -e "$data/powerlevel10k" ]]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$data/powerlevel10k"
+    make -C "$data/powerlevel10k" pkg
+  fi
+  if [[ ! -e "$data/zsh-history-substring-search" ]]; then
+    git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search.git "$data/zsh-history-substring-search"
+    zcompile-many "$data/zsh-history-substring-search/{zsh-history-substring-search.zsh}"
+  fi
+  if [[ ! -e "$data/fzf-tab" ]]; then
+    git clone --depth=1 https://github.com/Aloxaf/fzf-tab.git "$data/fzf-tab"
+    zcompile-many "$data/fzf-tab/fzf-tab.zsh"
+  fi
+  if [[ ! -e /usr/share/fzf ]]; then
+    zcompile-many /usr/share/fzf/{completion.zsh,key-bindings.zsh}
+  fi
 
-# Enable the "new" completion system (compsys).
-autoload -Uz compinit && compinit
-[[ ~/.zcompdump.zwc -nt ~/.zcompdump ]] || zcompile-many ~/.zcompdump
-unfunction zcompile-many
+  # Activate Powerlevel10k Instant Prompt.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+
+  # Enable the "new" completion system (compsys).
+  autoload -Uz compinit && compinit
+  [[ "$HOME/.zcompdump.zwc" -nt "$HOME/.zcompdump" ]] || zcompile-many "$HOME/.zcompdump"
+  unfunction zcompile-many
+}
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -50,7 +54,7 @@ unfunction zcompile-many
 ####################
 
 # History Configuration
-export HISTFILE=~/.zsh_history
+export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 export HISTCONTROL=ignoreboth
@@ -81,12 +85,14 @@ export EDITOR="/usr/bin/nvim"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Load plugins.
-source ~/.local/share/zsh/fzf-tab/fzf-tab.zsh
-source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source <(fzf --zsh)
-source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.p10k.zsh
+function () {
+  local data="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 
-# export FZF_BASE=/usr/share/fzf
+  source <(fzf --zsh)
+  source $data/fzf-tab/fzf-tab.zsh
+  source $data/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $data/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $data/zsh-history-substring-search/zsh-history-substring-search.zsh
+  source $data/powerlevel10k/powerlevel10k.zsh-theme
+  source $HOME/.p10k.zsh
+}
