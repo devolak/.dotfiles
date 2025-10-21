@@ -32,9 +32,6 @@ function () {
     git clone --depth=1 https://github.com/Aloxaf/fzf-tab.git "$data/fzf-tab"
     zcompile-many "$data/fzf-tab/fzf-tab.zsh"
   fi
-  if [[ ! -e /usr/share/fzf ]]; then
-    zcompile-many /usr/share/fzf/{completion.zsh,key-bindings.zsh}
-  fi
 
   # Activate Powerlevel10k Instant Prompt.
   if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -88,11 +85,11 @@ export EDITOR="/usr/bin/nvim"
 function () {
   local data="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 
-  source <(fzf --zsh)
+  source $data/powerlevel10k/powerlevel10k.zsh-theme
+  [[ ! -f /usr/bin/fzf ]] || source <(fzf --zsh)
   source $data/fzf-tab/fzf-tab.zsh
   source $data/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $data/zsh-autosuggestions/zsh-autosuggestions.zsh
   source $data/zsh-history-substring-search/zsh-history-substring-search.zsh
-  source $data/powerlevel10k/powerlevel10k.zsh-theme
-  source $HOME/.p10k.zsh
+  [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 }
