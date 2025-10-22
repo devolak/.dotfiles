@@ -52,11 +52,11 @@ function () {
 
 # History Configuration
 export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/.zsh_history"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-export HISTCONTROL=ignoreboth
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_SPACE
+HISTSIZE=100000
+SAVEHIST=100000
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # Use custom less colors for man pages.
 export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
@@ -64,7 +64,7 @@ export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
 
 # Plugin Configuration
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-export FZF_CTRL_R_OPTS="--layout reverse"
+export FZF_CTRL_R_OPTS="--with-nth 2.. --layout reverse"
 
 # Binds
 bindkey '^[[A' history-substring-search-up
@@ -87,6 +87,7 @@ function () {
 
   source $data/powerlevel10k/powerlevel10k.zsh-theme
   [[ ! -f /usr/bin/fzf ]] || source <(fzf --zsh)
+  #source <(fzf --zsh | sed -e '/zmodload/s/perl/perl_off/' -e '/selected/s/fc -rl/fc -rli/')
   source $data/fzf-tab/fzf-tab.zsh
   source $data/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $data/zsh-autosuggestions/zsh-autosuggestions.zsh
