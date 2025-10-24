@@ -51,11 +51,8 @@ function () {
 ####################
 
 # History Configuration
-export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/.zsh_history"
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
-HISTSIZE=100000
-SAVEHIST=100000
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 
 # Use custom less colors for man pages.
