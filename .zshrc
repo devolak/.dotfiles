@@ -3,7 +3,9 @@
 #   exec tmux
 # fi
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-ascii-8color-instant-prompt-${(%):-%n}.zsh" && $TERM == "linux" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-ascii-8color-instant-prompt-${(%):-%n}.zsh"
+elif [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -45,4 +47,8 @@ alias rmpkg="sudo pacman -Rsn"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+if [[ -r "$HOME/.p10k-ascii-8color.zsh" && $TERM == "linux" ]]; then
+  source "$HOME/.p10k-ascii-8color.zsh"
+elif [[ -r "$HOME/.p10k.zsh" ]]; then
+  source "$HOME/.p10k.zsh"
+fi
