@@ -39,4 +39,11 @@ bindkey '^[[F' end-of-line
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+alias ls="ls -h --color --group-directories-first"
+alias grep="grep --color=auto"
+alias rmpkg="sudo pacman -Rsn"
+alias cleanup="sudo pacman -Rsn $(pacman -Qtdq)"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
