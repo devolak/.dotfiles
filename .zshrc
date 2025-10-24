@@ -29,6 +29,8 @@ antidote load
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 
+set -o emacs
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey '^H' backward-kill-word
