@@ -53,15 +53,9 @@ function () {
 # History Configuration
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
-export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
-
-# Use custom less colors for man pages.
-export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
-export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
 
 # Plugin Configuration
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-export FZF_CTRL_R_OPTS="--with-nth 2.. --layout reverse"
 
 # Binds
 bindkey '^[[A' history-substring-search-up
@@ -69,12 +63,6 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^H' backward-kill-word
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
-
-#######################
-# Environment Variables
-#######################
-
-export EDITOR="/usr/bin/nvim"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
