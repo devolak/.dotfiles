@@ -10,3 +10,8 @@ export SAVEHIST=100000
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 
 export EDITOR="/usr/bin/nvim"
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESS="-R"
+
+export BAT_THEME="ansi"
+eval "$(batman --export-env)"
