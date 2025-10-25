@@ -42,6 +42,8 @@
     "network",
     "custom/seperator",
     "bluetooth",
+    "custom/seperator",
+    "wireplumber",
     "custom/r_end",
     "custom/l_end",
     "tray",
@@ -57,7 +59,7 @@
 
   "niri/workspaces": {
     "format": "{value}",
-    "all-outputs": false,
+    "all-outputs": false
   },
 
   "niri/window": {
@@ -76,6 +78,28 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "rotate": 0,
+    "format-alt": "{:R% %d-%m-%y}",
+    "tooltip": true,
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 4,
+      "format": {
+        "months": "<span color='#85c1dc'><b>{}</b></span>",
+        "weekdays": "<span color='#c6d0f5'><b>{}</b></span>",
+        "days": "<span color='#b5bfe2'>{}</span>",
+        "today": "<span color='#a6d189'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up"
+    }
   },
 
   "memory": {
@@ -108,48 +132,14 @@
     "interval": 2
   },
 
-  "pulseaudio": {
-    "format": "{icon} {volume}",
-    "rotate": 0,
-    "format-muted": "婢",
-    "on-click": "pavucontrol -t 3",
-    "on-click-right": "volumecontrol.sh -s ''",
-    "on-click-middle": "volumecontrol.sh -o m",
-    "on-scroll-up": "volumecontrol.sh -o i",
-    "on-scroll-down": "volumecontrol.sh -o d",
-    "tooltip-format": "{icon} {desc} // {volume}%",
-    "scroll-step": 5,
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
-    }
-  },
-
-  "clock": {
-    "format": "{:%I:%M %p}",
-    "rotate": 0,
-    "format-alt": "{:R% %d-%m-%y}",
-    "tooltip": true,
-    "tooltip-format": "<span>{calendar}</span>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 4,
-      "format": {
-        "months": "<span color='#85c1dc'><b>{}</b></span>",
-        "weekdays": "<span color='#c6d0f5'><b>{}</b></span>",
-        "days": "<span color='#b5bfe2'>{}</span>",
-        "today": "<span color='#a6d189'><b><u>{}</u></b></span>"
-      }
-    },
-    "actions": {
-      "on-scroll-up": "shift_down",
-      "on-scroll-down": "shift_up"
-    }
+  "wireplumber": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "  Mute",
+    "format-icons": ["", "", ""],
+    "min-length": 7,
+    "align": 0,
+    "scroll-step": 1.0,
+    "on-click": "pavucontrol -t 3"
   },
 
   "custom/notification": {

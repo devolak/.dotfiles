@@ -66,6 +66,8 @@ window#waybar {
 
 #memory,
 #network,
+#bluetooth,
+#wireplumber,
 #custom-l_end,
 #custom-r_end {
   color: @waybar_text;
