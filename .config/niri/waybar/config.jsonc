@@ -21,9 +21,9 @@
   "modules-left": [
     "custom/padd",
     "custom/l_end",
-    "hyprland/workspaces",
+    "niri/workspaces",
     "custom/small_r_end",
-    "hyprland/window",
+    "niri/window",
     "custom/r_end",
     "custom/padd"
   ],
@@ -53,7 +53,7 @@
   //Module Config
   //------------------------------
 
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     // "format": "{icon}",
     // "format-icons": {
     //  "default": "",
@@ -78,7 +78,7 @@
     // }
   },
 
-  "hyprland/window": {
+  "niri/window": {
     "format": "<span weight='bold'>{title}</span>",
     "max-length": 120,
     "icon": false,
