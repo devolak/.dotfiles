@@ -67,6 +67,7 @@ window#waybar {
 #memory,
 #network,
 #bluetooth,
+#mpris,
 #wireplumber,
 #custom-l_end,
 #custom-r_end {

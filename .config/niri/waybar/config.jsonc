@@ -37,6 +37,8 @@
   "modules-right": [
     "custom/padd",
     "custom/l_end",
+    "mpris",
+    "custom/seperator",
     "memory",
     "custom/seperator",
     "network",
@@ -117,6 +119,20 @@
     "max-length": 10,
     "tooltip": true,
     "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
+  },
+
+  "mpris": {
+    "player": "chromium",
+    "ignored-players": ["firefox"],
+    "format": "{status_icon}  <i>{dynamic}</i> ",
+    "tooltip": false,
+    "dynamic-len": 80,
+    "dynamic-order": ["title", "artist"],
+    "align": 1,
+    "status-icons": {
+      "playing": "",
+      "paused": ""
+    }
   },
 
   "network": {
