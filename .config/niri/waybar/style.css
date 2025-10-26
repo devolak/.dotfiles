@@ -98,9 +98,20 @@ window#waybar {
   padding-right: 0px;
 }
 
-#custom-seperator {
+#custom-separator {
   color: @waybar_text;
   background: @waybar_bg;
+  font-size: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#custom-separator_dot {
+  color: @waybar_text;
+  background: @waybar_bg;
+  font-size: 10px;
   margin-left: 2px;
   margin-right: 2px;
   padding-left: 0px;
