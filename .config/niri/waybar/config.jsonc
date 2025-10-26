@@ -5,7 +5,7 @@
   //------------------------------
   "layer": "top",
   "position": "top",
-  "mod": "dock",
+  // "mod": "dock",
   "height": 32,
   "gtk-layer-shell": true,
   //"margin-left": 6,
@@ -98,8 +98,8 @@
     "interval": 30,
     "format": " {used:0.1f}G",
     "tooltip": false,
-    "max-length": 6,
-    "min-length": 6
+    "max-length": 7,
+    "min-length": 7
   },
 
   "mpris": {

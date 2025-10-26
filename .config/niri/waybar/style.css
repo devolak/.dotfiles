@@ -2,11 +2,19 @@
 
 * {
   border: none;
+  border-color: transparent;
   border-radius: 0px;
   font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 14px;
   min-height: 14px;
+}
+
+tooltip {
+  background: rgba(54, 54, 70, 0.99999);
+  border-radius: 12px;
+  border-width: 2px;
+  border-style: solid;
 }
 
 window#waybar {
