@@ -5,7 +5,7 @@
   border-color: transparent;
   border-radius: 0px;
   font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 14px;
   min-height: 14px;
 }
@@ -85,7 +85,6 @@ window#waybar {
   margin: 6px 0px 6px 0px;
   padding-left: 4px;
   padding-right: 4px;
-
 }
 
 #custom-l_end {
