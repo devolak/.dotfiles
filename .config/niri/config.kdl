@@ -162,6 +162,11 @@ prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+environment {
+  XCURSOR_THEME "Bibata-Modern-Ice"
+  XCURSOR_SIZE "24"
+}
+
 cursor {
   xcursor-theme "Bibata-Modern-Ice"
   xcursor-size 24
@@ -256,6 +261,12 @@ layer-rule {
 
   place-within-backdrop true
   geometry-corner-radius 3
+}
+
+layer-rule {
+  match namespace="^wallpaper$"
+  match at-startup=true
+  place-within-backdrop false
 }
 
 binds {
