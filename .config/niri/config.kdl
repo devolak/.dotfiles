@@ -276,6 +276,14 @@ spawn-at-startup ""
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 
+cursor {
+  xcursor-theme "Bibata-Modern-Ice"
+  xcursor-size 24
+
+  hide-when-typing
+  hide-after-inactive-ms 1000
+}
+
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
