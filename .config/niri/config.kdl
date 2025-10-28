@@ -138,6 +138,16 @@ layout {
         // fixed 1920
     }
 
+    tab-indicator {
+      place-within-column
+      gap 2
+      width 8
+      length total-proportion=0.5
+      position "left"
+      gaps-between-tabs 4
+      corner-radius 3
+    }
+
     // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
     // preset-window-heights { }
 
@@ -202,7 +212,7 @@ layout {
 
         width 3
         active-color "#c8c093"
-        inactive-color "#938aa9"
+        inactive-color "#54546d"
 
         // Color of the border around windows that request your attention.
         urgent-color "#c34043"
@@ -628,7 +638,7 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
+    Mod+T { toggle-column-tabbed-display; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
