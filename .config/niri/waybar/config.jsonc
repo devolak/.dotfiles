@@ -42,6 +42,8 @@
     "memory",
     "custom/padd",
     "network",
+    "custom/padd",
+    "custom/powermenu",
     "custom/r_end"
   ],
 
@@ -159,6 +161,12 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+
+  "custom/powermenu": {
+    "tooltip": false,
+    "format": "",
+    "on-click": "powermenu"
   },
 
   "custom/l_end": {
