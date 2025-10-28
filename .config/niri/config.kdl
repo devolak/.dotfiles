@@ -284,6 +284,19 @@ cursor {
   hide-after-inactive-ms 1000
 }
 
+overview {
+  zoom 0.45
+  backdrop-color "#2a2a37"
+
+  workspace-shadow {
+    // off
+    softness 3
+    spread 0
+    offset x=6 y=6
+    color "#16161d"
+  }
+}
+
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
