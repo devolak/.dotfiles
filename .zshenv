@@ -17,3 +17,5 @@ export LESS="-R"
 
 export BAT_THEME="ansi"
 eval "$(batman --export-env)"
+
+export PATH="$HOME/.local/bin:$PATH"
