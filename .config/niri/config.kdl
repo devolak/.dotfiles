@@ -288,6 +288,8 @@ binds {
   Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
   Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
   Mod+W hotkey-overlay-title="Run a browser: Firefox" { spawn "firefox"; }
+
+  Mod+N hotkey-overlay-title="Toggle notification center: swaync-client" { spawn-sh "swaync-client -t"; }
   Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
   // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
