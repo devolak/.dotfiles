@@ -1,23 +1,23 @@
 :root {
-  --cc-bg: rgba(31, 31, 40, 1.0);
+  --cc-bg: rgba(21, 21, 29, 1.0);
   --noti-border-color: rgba(84, 84, 109, 1.0);
-  --noti-bg: 22, 22, 29;
+  --noti-bg: 31, 31, 40;
   --noti-bg-alpha: 1.0;
   --noti-bg-darker: rgb(38, 38, 38);
-  --noti-bg-hover: rgb(56, 56, 56);
-  --noti-bg-focus: rgba(34, 50, 73, 1.0);
-  --noti-close-bg: rgb(78, 78, 78);
-  --noti-close-bg-hover: rgb(94, 94, 94);
-  --text-color: rgb(220, 215, 186, 1.0);
+  --noti-bg-hover: rgb(34, 50, 73);
+  --noti-bg-focus: rgba(31, 31, 40, 1.0);
+  --noti-close-bg: rgb(84, 84, 109);
+  --noti-close-bg-hover: rgb(34, 50, 73);
+  --text-color: rgb(220, 215, 186);
   --text-color-disabled: rgb(150, 150, 150);
   --bg-selected: rgb(0, 128, 255);
-  --notification-icon-size: 64px;
+  --notification-icon-size: 24px;
   --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
-  --notification-group-icon-size: 32px;
+  --notification-group-icon-size: 24px;
   --border: 3px solid var(--noti-border-color);
   --border-radius: 3px;
   --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
-    0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+  0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
   --font-size-body: 14px;
   --font-size-summary: 16px;
   /* Deprecated variables (because of their typos). Keeeping them around for backwards compatibility. */
@@ -52,11 +52,11 @@ notificationwindow, blankwindow, blankwindow {
 
 .close-button {
   /* The notification Close Button */
-  background: var(--noti-close-bg);
+  background: transparent;
   color: var(--text-color);
   text-shadow: none;
   padding: 0;
-  border-radius: 100%;
+  border-radius: var(--border-radius);
   margin-top: 8px;
   margin-right: 8px;
   box-shadow: none;
@@ -67,7 +67,7 @@ notificationwindow, blankwindow, blankwindow {
 
 .close-button:hover {
   box-shadow: none;
-  background: var(--noti-close-bg-hover);
+  background: transparent;
   transition: var(--hover-tranistion);
   border: none;
 }
@@ -79,6 +79,8 @@ notificationwindow, blankwindow, blankwindow {
 
 .notification-row:focus {
   background: var(--noti-bg-focus);
+  border: var(--border);
+  border-radius: var(--border-radius);
 }
 
 .notification-row .notification-background {
@@ -89,7 +91,7 @@ notificationwindow, blankwindow, blankwindow {
   /* The actual notification */
   border-radius: var(--border-radius);
   border: var(--border);
-  padding: 0;
+  padding: 8px;
   transition: var(--hover-tranistion);
   background: rgba(var(--noti-bg), var(--noti-bg-alpha));
 }
@@ -139,7 +141,7 @@ notificationwindow, blankwindow, blankwindow {
   /* Notification Primary Image */
   -gtk-icon-filter: none;
   -gtk-icon-size: var(--notification-icon-size);
-  border-radius: 100px;
+  border-radius: 3px;
   /* Size in px */
   margin: 4px;
 }
@@ -173,7 +175,7 @@ notificationwindow, blankwindow, blankwindow {
   background: transparent;
   color: var(--text-color);
   text-shadow: none;
-  margin-right: 30px;
+  margin-right: 16px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
@@ -255,6 +257,8 @@ notificationwindow, blankwindow, blankwindow {
 
 .notification-group:focus {
   background: var(--noti-bg-focus);
+  border: 0px;
+  border-radius: var(--border-radius);
 }
 
 .notification-group.low {
@@ -270,11 +274,11 @@ notificationwindow, blankwindow, blankwindow {
 }
 
 .notification-group .notification-group-close-button .close-button {
-  margin: 12px 20px;
+  margin: 12px 12px;
 }
 
 .notification-group .notification-group-buttons, .notification-group .notification-group-headers {
-  margin: 0 16px;
+  margin: 8px 16px;
   color: var(--text-color);
 }
 
@@ -325,6 +329,7 @@ notificationwindow, blankwindow, blankwindow {
   /* The Control Center which contains the old notifications + widgets */
   background: var(--cc-bg);
   color: var(--text-color);
+  border: var(--border);
   border-radius: var(--border-radius);
 }
 
@@ -404,96 +409,23 @@ notificationwindow, blankwindow, blankwindow {
   font-size: 1.1rem;
 }
 
-/* Mpris widget */
-:root {
-  --mpris-album-art-overlay: rgba(0, 0, 0, 0.55);
-  --mpris-button-hover: rgba(0, 0, 0, 0.5);
-  --mpris-album-art-icon-size: 96px;
-  --mpris-album-art-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
-}
-
-.widget-mpris {
-  padding: 0;
-  /* The parent to all players */
-}
-
-.widget-mpris .widget-mpris-player {
-  margin: 16px 20px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--mpris-album-art-shadow);
-}
-
-.widget-mpris .widget-mpris-player .mpris-background {
-  filter: blur(10px);
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay {
-  padding: 16px;
-  background-color: var(--mpris-album-art-overlay);
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay button:hover {
-  /* The media player buttons (play, pause, next, etc...) */
-  background: var(--noti-bg-hover);
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-album-art {
-  border-radius: var(--border-radius);
-  box-shadow: var(--mpris-album-art-shadow);
-  -gtk-icon-size: var(--mpris-album-art-icon-size);
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-title {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
-  font-size: 1.1rem;
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay > box > button {
-  /* Change player control buttons */
-}
-
-.widget-mpris .widget-mpris-player .mpris-overlay > box > button:hover {
-  background-color: var(--mpris-button-hover);
-}
-
-.widget-mpris > box > button {
-  /* Change player side buttons */
-}
-
-.widget-mpris > box > button:disabled {
-  /* Change player side buttons insensitive */
-}
-
-/* Buttons widget */
-.widget-buttons-grid flowboxchild > button {
-  border-radius: var(--border-radius);
-}
-
-.widget-buttons-grid flowboxchild > button.toggle:checked {
-  /* style given to the active toggle button */
-}
-
 /* Menubar widget */
 .widget-menubar {
   /* The revealer buttons */
   /* .AnyName { Name defined in config after #
-    background-color: rgba(var(--noti-bg), 1.0);
-    padding: 8px;
-    margin: 8px;
-    border-radius: 12px;
+  background-color: rgba(var(--noti-bg), 1.0);
+  padding: 8px;
+  margin: 8px;
+  border-radius: 12px;
   }
 
   .AnyName>button {
-    background: transparent;
-    border: none;
+  background: transparent;
+  border: none;
   }
 
   .AnyName>button:hover {
-    background-color: var(--noti-bg-hover);
+  background-color: var(--noti-bg-hover);
   } */
 }
 
@@ -528,28 +460,6 @@ notificationwindow, blankwindow, blankwindow {
 
 .widget-menubar > revealer * button:last-child {
   margin-bottom: 0;
-}
-
-/* Volume widget */
-:root {
-  --widget-volume-row-icon-size: 24px;
-}
-
-/* Each row app icon */
-.widget-volume row image {
-  -gtk-icon-size: var(--widget-volume-row-icon-size);
-}
-
-.per-app-volume {
-  background-color: var(--noti-bg-alt);
-  margin: 8px;
-  margin-bottom: 0;
-  border-radius: var(--border-radius);
-}
-
-/* Slider widget */
-.widget-slider label {
-  font-size: inherit;
 }
 
 /* Backlight widget */
