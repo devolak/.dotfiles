@@ -20,10 +20,10 @@
   //------------------------------
   "modules-left": [
     "custom/l_end",
-    "niri/workspaces",
+    "hyprland/workspaces",
     "custom/padd",
     "custom/padd",
-    "niri/window",
+    "hyprland/window",
     "custom/r_end"
   ],
   "modules-center": [
@@ -53,12 +53,12 @@
   //Module Config
   //------------------------------
 
-  "niri/workspaces": {
-    "format": "{value}",
+  "hyprland/workspaces": {
+    "format": "{id}",
     "all-outputs": false
   },
 
-  "niri/window": {
+  "hyprland/window": {
     "format": "{title}",
     "max-length": 80,
     "separate-outputs": true,
