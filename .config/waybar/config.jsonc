@@ -111,7 +111,7 @@
     "ignored-players": ["firefox"],
     "format": "{status_icon}  <i>{dynamic}</i> ",
     "tooltip": false,
-    "dynamic-len": 80,
+    "dynamic-len": 70,
     "dynamic-order": ["title", "artist"],
     "align": 1,
     "status-icons": {
