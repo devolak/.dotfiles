@@ -2,11 +2,19 @@
 
 * {
   border: none;
+  border-color: transparent;
   border-radius: 0px;
   font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
   font-weight: bold;
   font-size: 14px;
   min-height: 14px;
+}
+
+tooltip {
+  background: rgba(54, 54, 70, 0.99999);
+  border-radius: 3px;
+  border-width: 3px;
+  border-style: solid;
 }
 
 window#waybar {
@@ -66,6 +74,11 @@ window#waybar {
 
 #memory,
 #network,
+#bluetooth,
+#mpris,
+#wireplumber,
+#custom-notification,
+#custom-powermenu,
 #custom-l_end,
 #custom-r_end {
   color: @waybar_text;
@@ -74,7 +87,6 @@ window#waybar {
   margin: 6px 0px 6px 0px;
   padding-left: 4px;
   padding-right: 4px;
-
 }
 
 #custom-l_end {
@@ -95,9 +107,20 @@ window#waybar {
   padding-right: 0px;
 }
 
-#custom-seperator {
+#custom-separator {
   color: @waybar_text;
   background: @waybar_bg;
+  font-size: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#custom-separator_dot {
+  color: @waybar_text;
+  background: @waybar_bg;
+  font-size: 10px;
   margin-left: 2px;
   margin-right: 2px;
   padding-left: 0px;
