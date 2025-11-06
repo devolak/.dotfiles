@@ -145,7 +145,7 @@
     "min-length": 7,
     "align": 0,
     "scroll-step": 1.0,
-    "on-click": "pavucontrol -t 3"
+    "on-click": "kitty --app-id=tuipopup wiremix"
   },
 
   "custom/notification": {
