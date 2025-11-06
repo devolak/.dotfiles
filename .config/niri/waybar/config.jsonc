@@ -128,7 +128,7 @@
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "󰖪 ",
     "tooltip-format-disconnected": "Disconnected",
-    "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+    "on-click": "kitty --app-id=tuipopup impala",
     "interval": 2
   },
 
@@ -145,7 +145,7 @@
     "min-length": 7,
     "align": 0,
     "scroll-step": 1.0,
-    "on-click": "pavucontrol -t 3"
+    "on-click": "kitty --app-id=tuipopup wiremix"
   },
 
   "custom/notification": {
