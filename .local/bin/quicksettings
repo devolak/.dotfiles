@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+chosen=$(printf "Bluetooth\nWifi" | fuzzel --dmenu -p "Quick settings: " --minimal-lines)
+
+case "$chosen" in
+  Bluetooth) kitty --app-id=tuipopup bluetui ;;
+  Wifi) kitty --app-id=tuipopup impala ;;
+  *) exit 1 ;;
+esac
