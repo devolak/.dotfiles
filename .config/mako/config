@@ -1,3 +1,44 @@
-default-timeout=1500
+max-history=20
+
+on-button-middle=dismiss --no-history
+
+font=JetBrainsMono 12
+background-color=#16161d
+text-color=#dcd7ba
+border-color=#7fb4ca
+progress-color=over #5588aa
+
+width=400
+outer-margin=20
+padding=10,15
+border-size=3
+border-radius=2
+
+max-icon-size=32
+icon-border-radius=0
+
+format=<b>%s</b>\n%b
+layer=top
+anchor=top-right
+
+default-timeout=3000
 ignore-timeout=1
-font=JetBrainsMono 14
+
+[mode=do-not-disturb]
+invisible=true
+
+[mode=do-not-disturb app-name=notify-send]
+invisible=false
+
+[urgency=low]
+default-timeout=3000
+border-color=#76946a
+
+[urgency=normal]
+default-timeout=5000
+border-color=#dca561
+
+
+[urgency=critical]
+default-timeout=0
+border-color=#c34043
