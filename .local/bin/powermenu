@@ -5,6 +5,6 @@ chosen=$(printf "Reboot\nShutdown\nLogout" | fuzzel --dmenu -p "Power Menu: " --
 case "$chosen" in
   Reboot) systemctl reboot ;;
   Shutdown) systemctl poweroff ;;
-  Logout) niri msg action quit ;;
+  Logout) hyprctl dispatch exit ;;
   *) exit 1 ;;
 esac
