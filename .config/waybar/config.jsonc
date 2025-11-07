@@ -128,7 +128,7 @@
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "󰖪 ",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "kitty --app-id=tuipopup impala",
+    "on-click": "foot -a tuipopup impala",
     "interval": 2
   },
 
@@ -145,7 +145,7 @@
     "min-length": 7,
     "align": 0,
     "scroll-step": 1.0,
-    "on-click": "kitty --app-id=tuipopup wiremix"
+    "on-click": "foot -a tuipopup wiremix"
   },
 
   "custom/notification": {
