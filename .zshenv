@@ -18,4 +18,6 @@ export LESS="-R"
 export BAT_THEME="ansi"
 eval "$(batman --export-env)"
 
+export GRIMBLAST_EDITOR="satty --copy-command 'wl-copy' --output-filename ~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H:%M:%S.png --filename" grimblast edit screen
+
 export PATH="$HOME/.local/bin:$PATH"
