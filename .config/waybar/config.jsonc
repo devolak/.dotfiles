@@ -115,8 +115,8 @@
     "dynamic-order": ["title", "artist"],
     "align": 1,
     "status-icons": {
-      "playing": "",
-      "paused": ""
+      "playing": "",
+      "paused": ""
     }
   },
 
