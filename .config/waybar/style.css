@@ -7,7 +7,7 @@
   font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
   font-weight: bold;
   font-size: 14px;
-  min-height: 14px;
+  /* min-height: 0px; */
 }
 
 tooltip {
@@ -15,11 +15,13 @@ tooltip {
   border-radius: 3px;
   border-width: 3px;
   border-style: solid;
+  text-shadow: none;
 }
 
 window#waybar {
   background: @waybar_bg;
   border-radius: 0px;
+  min-height: 32px;
 }
 
 #workspaces {
@@ -72,6 +74,7 @@ window#waybar {
   border-radius: 6px;
 }
 
+#custom-tray_toggle,
 #memory,
 #network,
 #bluetooth,

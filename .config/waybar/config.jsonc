@@ -37,6 +37,8 @@
     "custom/l_end",
     "mpris",
     "custom/padd",
+    "group/tray",
+    "custom/padd",
     "wireplumber",
     "custom/padd",
     "memory",
@@ -52,10 +54,23 @@
   //------------------------------
   //Module Config
   //------------------------------
+  "group/tray": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 100,
+      "transition-left-to-right": true,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "custom/tray_toggle",
+      "tray"
+    ]
+  },
 
   "hyprland/workspaces": {
     "format": "{name}",
-    "all-outputs": false
+    "all-outputs": false,
+    "sort-by": "default"
   },
 
   "hyprland/window": {
@@ -207,6 +222,12 @@
 
   "custom/padd": {
     "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/tray_toggle": {
+    "format": " ",
     "interval": "once",
     "tooltip": false
   }
