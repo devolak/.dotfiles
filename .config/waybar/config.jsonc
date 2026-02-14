@@ -155,7 +155,7 @@
 
   "wireplumber": {
     "format": "{icon}  {volume}%",
-    "format-muted": "  Mute",
+    "format-muted": "  Muted",
     "format-icons": ["", "", ""],
     "min-length": 7,
     "align": 0,

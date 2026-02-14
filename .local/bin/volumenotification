@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 
-volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-volume=$(echo "$volume" | awk '{print $2}')
+status=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+volume=$(echo "$status" | awk '{print $2}')
 volume=$(echo "( $volume * 100) / 1" | bc)
 
-notify-send -a 'volume' -h int:value:$volume "Volume: ${volume}%"
+status=$(echo "$status" | awk '{print $3}')
+
+if [[ $status == "[MUTED]" ]]; then
+  notify-send -c volume -h string:x-canonical-private-synchronous:volume -h int:value:$volume "  ${volume}% Muted"
+elif (($volume > 69)); then
+  notify-send -c volume -h string:x-canonical-private-synchronous:volume -h int:value:$volume "  ${volume}%"
+elif (($volume > 32)); then
+  notify-send -c volume -h string:x-canonical-private-synchronous:volume -h int:value:$volume "  ${volume}%"
+elif (($volume >= 0)); then
+  notify-send -c volume -h string:x-canonical-private-synchronous:volume -h int:value:$volume "  ${volume}%"
+fi
