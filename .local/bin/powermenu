@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-chosen=$(printf "Reboot\nShutdown\nLogout" | fuzzel --dmenu -p "Power Menu: " --minimal-lines)
+chosen=$(printf "Logout\nSuspend\nReboot\nShutdown" | fuzzel --dmenu -p "Power Menu: " --minimal-lines)
 
 case "$chosen" in
-  Reboot) systemctl reboot ;;
-  Shutdown) systemctl poweroff ;;
-  Logout) hyprctl dispatch exit ;;
-  *) exit 1 ;;
+Logout) hyprctl dispatch exit ;;
+Suspend) systemctl suspend ;;
+Reboot) systemctl reboot ;;
+Shutdown) systemctl poweroff ;;
+*) exit 1 ;;
 esac
