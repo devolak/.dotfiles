@@ -1,0 +1,39 @@
+@define-color fujiWhite #dcd7ba;
+@define-color oldWhite #c8c093;
+
+@define-color sumiInk0 #16161d;
+@define-color sumiInk1 #1f1f28;
+@define-color sumiInk2 #2a2a37;
+@define-color sumiInk3 #363646;
+@define-color sumiInk4 #54546d;
+
+@define-color waveBlue1 #223249;
+@define-color waveBlue2 #2d4f67;
+
+@define-color autumnRed #c34043;
+@define-color autumnGreen #76946a;
+@define-color boatYellow2 #c0a36e;
+@define-color crystalBlue #7e9cd8;
+@define-color oniViolet #957fb8;
+@define-color waveAqua1 #6a9589;
+@define-color fujiGray #727169;
+@define-color lotusRed3 #e82424;
+@define-color springGreen #98bb6c;
+@define-color carpYellow #e6c384;
+@define-color springBlue #7fb4ca;
+@define-color springViolet1 #938aa9;
+@define-color waveAqua2 #7aa89f;
+
+@define-color sakuraPink #d27e99;
+
+@define-color waybar_bg @sumiInk3;
+@define-color waybar_text @fujiWhite;
+
+@define-color workspaces_bg @sumiInk2;
+@define-color inactive_workspaces_text @crystalBlue;
+@define-color active_workspaces_bg @crystalBlue;
+@define-color hover_workspaces_bg @springGreen;
+
+@define-color window_text @fujiWhite;
+
+@define-color clock_text @fujiWhite;

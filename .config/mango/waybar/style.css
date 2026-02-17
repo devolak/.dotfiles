@@ -1,0 +1,131 @@
+@import "kanagawa-wave.css";
+
+* {
+  border: none;
+  border-color: transparent;
+  border-radius: 0px;
+  font-family: JetBrainsMono, JetBrainsMonoNLNerdfont;
+  font-weight: bold;
+  font-size: 14px;
+  /* min-height: 0px; */
+}
+
+tooltip {
+  background: rgba(54, 54, 70, 0.99999);
+  border-radius: 3px;
+  border-width: 3px;
+  border-style: solid;
+  text-shadow: none;
+}
+
+window#waybar {
+  background: @waybar_bg;
+  border-radius: 0px;
+  min-height: 32px;
+}
+
+#workspaces {
+  background: @workspaces_bg;
+}
+
+#workspaces button {
+  color: @inactive_workspaces_text;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+  animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+  background: @active_workspaces_bg;
+  color: @waybar_bg;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.3s linear;
+}
+
+#workspaces button:hover {
+  background: @hover_workspaces_bg;
+  color: @waybar_bg;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s linear;
+}
+
+#window {
+  color: @window_text;
+  background-color: @waybar_bg;
+  border-radius: 6px;
+}
+
+#clock {
+  color: @clock_text;
+  padding: 6px 12px;
+  background-color: inherit;
+  border-radius: 6px;
+}
+
+#custom-tray_toggle,
+#memory,
+#network,
+#bluetooth,
+#mpris,
+#wireplumber,
+#custom-notification,
+#custom-powermenu,
+#custom-l_end,
+#custom-r_end {
+  color: @waybar_text;
+  background: @waybar_bg;
+  opacity: 1;
+  margin: 6px 0px 6px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#custom-l_end {
+  border-radius: 3px 0px 0px 3px;
+  margin-left: 9px;
+  padding-left: 3px;
+}
+
+#custom-r_end {
+  border-radius: 0px 3px 3px 0px;
+  margin-right: 9px;
+  padding-right: 3px;
+}
+
+#custom-small_r_end {
+  border-radius: 0px 3px 3px 0px;
+  margin-right: 3px;
+  padding-right: 0px;
+}
+
+#custom-separator {
+  color: @waybar_text;
+  background: @waybar_bg;
+  font-size: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#custom-separator_dot {
+  color: @waybar_text;
+  background: @waybar_bg;
+  font-size: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
