@@ -1,16 +1,44 @@
 return {
   "catgoose/nvim-colorizer.lua",
   opts = {
-    user_default_options = {
-      names = false,
-      RGB = true, -- #RGB hex codes
-      RGBA = true, -- #RGBA hex codes
-      RRGGBB = true, -- #RRGGBB hex codes
-      RRGGBBAA = true, -- #RRGGBBAA hex codes
-      AARRGGBB = true, -- 0xAARRGGBB hex codes
-      -- css = true, -- Enable all CSS *features*:
-      -- names, RGB, RGBA, RRGGBB, RRGGBBAA, AARRGGBB, rgb_fn, hsl_fn
-      css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    options = {
+      parsers = {
+        css = true,
+        css_fn = true,
+        hex = {
+          enabled = true,
+          rgb = true,
+          rgba = true,
+          rrggbb = true,
+          rrggbbaa = true,
+          aarrggbb = true,
+        },
+        rgb = { enabled = true },
+        hsl = { enabled = true },
+        oklch = { enabled = true },
+        -- tailwind = {
+        --   enabled = true,
+        --   lsp = true,
+        --   update_names = true,
+        -- },
+        sass = {
+          enabled = true,
+          parsers = { css = true },
+          variable_pattern = "^%$([%w_-]+)",
+        },
+      },
+      display = {
+        mode = "background",
+        background = {
+          bright_fg = "#000000",
+          dark_fg = "#ffffff",
+        },
+        virtualtext = {
+          char = "■",
+          position = "eol", -- "eol"|"before"|"after"
+          hl_mode = "foreground",
+        },
+      },
     },
   },
 }
