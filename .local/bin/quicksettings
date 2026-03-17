@@ -5,6 +5,6 @@ chosen=$(printf "Audio\nBluetooth\nWifi" | fuzzel --dmenu -p "Quick settings: " 
 case "$chosen" in
   Audio) foot -a tuipopup wiremix ;;
   Bluetooth) foot -a tuipopup bluetui ;;
-  Wifi) foot -a tuipopup impala ;;
+  Wifi) foot -a tuipopup wifitui ;;
   *) exit 1 ;;
 esac
