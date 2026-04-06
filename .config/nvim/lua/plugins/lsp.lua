@@ -1,17 +1,20 @@
 return {
-  "mason-org/mason-lspconfig.nvim",
-  opts = {
-    ensure_installed = {
-      "lua_ls",
-      "bashls",
-      "clangd",
-      "html",
-      "cssls",
-      "hyprls",
-    },
-  },
+  "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile"},
   dependencies = {
-    { "mason-org/mason.nvim", opts = {} },
-    "neovim/nvim-lspconfig",
+    { "mason-org/mason.nvim", opts = {}, },
+    {
+      "mason-org/mason-lspconfig.nvim",
+      opts = {
+        ensure_installed = {
+          "lua_ls",
+          "bashls",
+          "clangd",
+          "html",
+          "cssls",
+          "hyprls",
+        },
+      },
+    },
   },
 }
