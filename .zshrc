@@ -25,6 +25,7 @@ source $XDG_DATA_HOME/antidote/antidote.zsh
 
 [[ ! -f /usr/bin/fzf ]] || source <(fzf --zsh)
 antidote load
+[[ ! -f /usr/bin/zoxide ]] || eval "$(zoxide init zsh)"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
