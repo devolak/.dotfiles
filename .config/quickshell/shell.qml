@@ -4,9 +4,9 @@ import QtQuick
 import qs.Modules
 
 ShellRoot {
-  id: shellRoot
+  id: root
 
-  Bar {
-    id: bar
+  MainBar {
+    id: mainBar
   }
 }
