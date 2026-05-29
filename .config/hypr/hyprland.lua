@@ -16,15 +16,18 @@ local shadow_color = "rgba(16161dff)"
 --- MONITORS ---
 ----------------
 
+local monitor1 = "desc:Microstep G274QPF E2 CC2HJ65501726"
+local monitor2 = "desc:Ancor Communications Inc ASUS PB238 C7LMTF053691"
+
 hl.monitor({
-  output = "DP-3",
+  output = monitor1,
   mode = "2560x1440@180",
   position = "auto",
   scale = "1",
 })
 
 hl.monitor({
-  output = "DP-2",
+  output = monitor2,
   mode = "1920x1080@60",
   position = "auto-left",
   scale = "1",
@@ -40,6 +43,8 @@ lockscreen = "hyprlock"
 screenshot = "hyprshot"
 powermenu = "powermenu"
 quicksettings = "quicksettings"
+waybar = "waybar"
+barreload = "sleep 5 && pkill waybar && hyprctl dispatch 'hl.dsp.exec_cmd(waybar)'"
 
 terminal = "foot"
 filemanager = terminal .. " yazi"
@@ -71,13 +76,13 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 -----------------
 
 hl.on("hyprland.start", function ()
-  hl.exec_cmd("xrandr --output DP-3 --primary")
-  hl.exec_cmd("hyprctl dispatch workspace 1")
+  hl.exec_cmd("xrandr --output DP-6 --primary")
+  hl.exec_cmd("hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'")
 
   hl.exec_cmd("waybar")
   hl.exec_cmd("mako")
   hl.exec_cmd("awww-daemon")
-  hl.exec_cmd("hypridle")
+  -- hl.exec_cmd("hypridle")
   hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
   hl.exec_cmd("xwayland")
   hl.exec_cmd("wl-paste --type text --watch cliphist store")
@@ -236,21 +241,21 @@ require("keybinds")
 --- WORKSPACES AND WINDOWS ---
 ------------------------------
 
-hl.workspace_rule({ workspace = "1", monitor = "DP-3", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "2", monitor = "DP-3", persistent = true,layout = "master" })
-hl.workspace_rule({ workspace = "3", monitor = "DP-3", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "4", monitor = "DP-3", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "5", monitor = "DP-3", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "29", monitor = "DP-3", default_name = "steam", layout = "scrolling" })
-hl.workspace_rule({ workspace = "30", monitor = "DP-3", default_name = "games", layout = "monocle" })
+hl.workspace_rule({ workspace = "1", monitor = monitor1, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "2", monitor = monitor1, persistent = true,layout = "master" })
+hl.workspace_rule({ workspace = "3", monitor = monitor1, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "4", monitor = monitor1, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "5", monitor = monitor1, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "29", monitor = monitor1, default_name = "steam", layout = "scrolling" })
+hl.workspace_rule({ workspace = "30", monitor = monitor1, default_name = "games", layout = "monocle" })
 
-hl.workspace_rule({ workspace = "6", monitor = "DP-2", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "7", monitor = "DP-2", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "8", monitor = "DP-2", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "9", monitor = "DP-2", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "10", monitor = "DP-2", persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "31", monitor = "DP-2", default_name = "discord", layout = "scrolling" })
-hl.workspace_rule({ workspace = "32", monitor = "DP-2", default_name = "music", layout = "master", on_created_empty = "youtube-music" })
+hl.workspace_rule({ workspace = "6", monitor = monitor2, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "7", monitor = monitor2, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "8", monitor = monitor2, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "9", monitor = monitor2, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "10", monitor = monitor2, persistent = true, layout = "master" })
+hl.workspace_rule({ workspace = "31", monitor = monitor2, default_name = "discord", layout = "scrolling" })
+hl.workspace_rule({ workspace = "32", monitor = monitor2, default_name = "music", layout = "master", on_created_empty = "youtube-music" })
 
 hl.layer_rule({ match = { namespace = "selection" }, no_anim = true })
 
