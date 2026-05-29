@@ -37,6 +37,16 @@ Variants {
         verticalCenter: parent.verticalCenter
       }
     }
+
+    WindowTitle {
+      id: windowTitle
+      targetMonitor: modelData.name
+      anchors {
+        left: workspaceModule.right
+        leftMargin: 16
+        verticalCenter: parent.verticalCenter
+      }
+    }
   }
 
   // implicitHeight: 32
