@@ -4,7 +4,8 @@ import Quickshell.Hyprland
 import QtQuick
 import qs.Common
 import qs.Modules
-// import qs.Services
+import qs.Services
+// import qs.Widgets
 
 Variants {
   id: root 
@@ -46,6 +47,11 @@ Variants {
         leftMargin: 16
         verticalCenter: parent.verticalCenter
       }
+    }
+
+    Calendar {
+      id: calendar
+      anchors.centerIn: parent
     }
   }
 
