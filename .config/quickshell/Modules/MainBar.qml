@@ -5,7 +5,6 @@ import QtQuick
 import qs.Common
 import qs.Modules
 import qs.Services
-// import qs.Widgets
 
 Variants {
   id: root 
@@ -53,7 +52,14 @@ Variants {
       id: calendar
       anchors.centerIn: parent
     }
-  }
 
-  // implicitHeight: 32
+    SystemStats {
+      id: statusModule
+      anchors {
+        right: parent.right
+        rightMargin: 15
+        verticalCenter: parent.verticalCenter
+      }
+    }
+  }
 }
