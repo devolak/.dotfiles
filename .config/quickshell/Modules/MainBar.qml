@@ -1,10 +1,8 @@
 import Quickshell
 import Quickshell.Wayland
-import Quickshell.Hyprland
 import QtQuick
 import qs.Common
 import qs.Modules
-import qs.Services
 
 Variants {
   id: root 
@@ -14,11 +12,8 @@ Variants {
     required property var modelData
     screen: modelData
 
-    WlrLayershell.layer: WlrLayer.Overlay
+    WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "quickshell-bar"
-
-    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(screen)
-    visible: !FullscreenState.isFullscreen(monitor)
 
     anchors {
       top: true
