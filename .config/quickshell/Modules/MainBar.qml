@@ -26,6 +26,7 @@ Variants {
       right: true
     }
     color: Color.moduleBackground
+    // color: transparent
     implicitHeight: Style.barHeight
 
     Workspaces {
@@ -40,10 +41,13 @@ Variants {
 
     WindowTitle {
       id: windowTitle
-      targetMonitor: modelData.name
+      // targetMonitor: Hyprland.monitorFor(parent.screen)
+      // targetMonitor: modelData.name
+      // monitor: mainBar.monitor
+      screen: mainBar.modelData
       anchors {
         left: workspaceModule.right
-        leftMargin: 16
+        leftMargin: 0
         verticalCenter: parent.verticalCenter
       }
     }

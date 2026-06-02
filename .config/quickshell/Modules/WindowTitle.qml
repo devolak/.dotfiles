@@ -1,44 +1,67 @@
 import Quickshell
 import QtQuick
-import Quickshell.Wayland
 import Quickshell.Hyprland
 import qs.Common
 
 Rectangle {
   id: root
-  // model: Quickshell.screens
+  required property ShellScreen screen
 
-  property string targetMonitor: ""
-  // readonly property Toplevel activeWindow: ToplevelManager.activeToplevel
-  // property string activeWindowName: activeWindow?.activated ? activeWindow?.title : ""
+  readonly property HyprlandMonitor monitor: Hyprland.monitorFor(screen)
+  readonly property HyprlandWorkspace workspace: monitor?.activeWorkspace
 
-  // property HyprlandWorkspace activeWorkspace: Hyprland.workspaces.values.find(ws => ws.monitor === modelData && ws.active)
-  // property string activeWindowTitle: activeWorkspace && activeWorkspace.toplevels.values.length > 0 ? activeWorkspace.toplevels.values[0].title : ""
+  property string lastTitle: ""
 
-  readonly property var activeWindow: Hyprland.activeToplevel
-  readonly property var thisMonitor: Hyprland.monitorFor(QsWindow.window.screen)
-
-  visible: activeWindow && thisMonitor && activeWindow.monitor && activeWindow.monitor.id === thisMonitor.id
-
-  implicitWidth: windowTitle.width
+  implicitWidth: contentLayout.width + 32
   implicitHeight: Style.barHeight
-  radius: 0
+  radius: 4
 
   color: Color.moduleBackground
 
-  Text {
-    id: windowTitle
+  Row {
+    id: contentLayout
     anchors.centerIn: parent
-    width: parent.implicitWidth
 
-    color: Color.moduleText
+    Text {
+      id: windowTitle
+      // anchors.centerIn: parent
 
-    font {
-      family: Style.barFontFamily
-      pixelSize: Style.barFontSize
-      bold: true
+      color: Color.moduleText
+
+      font {
+        family: Style.barFontFamily
+        pixelSize: Style.barFontSize
+        bold: true
+      }
+
+      function getWindowTitle() {
+
+        if (root.workspace.toplevels.values.length === 0) {
+          return ""
+        }
+
+        if (!root.workspace) {
+          return root.lastTitle
+        }
+
+        const active = root.workspace.toplevels.values.find(w => w.activated)
+
+        if (active?.title) {
+          root.lastTitle = active.title
+        }
+
+        return active?.title ?? root.lastTitle
+      }
+
+      text: {
+        const title = windowTitle.getWindowTitle()
+
+        if (title.length > 60) {
+          return title.substring(0, 60) + "..."
+        } else {
+          return title
+        }
+      }
     }
-
-    text: visible ? activeWindow.title : ""
   }
 }
