@@ -33,9 +33,9 @@ Rectangle {
       property MprisPlayer player: Mpris.players.values.length > 0 ? Mpris.players.values[0] : null
 
       Text {
-        text: parent.player.isPlaying
-          ? ""
-          : ""
+        text: mprisModule.player.isPlaying
+          ? " "
+          : " "
 
         color: Color.moduleText
         font {
@@ -43,19 +43,19 @@ Rectangle {
           pixelSize: Style.barFontSize
           italic: true
           bold: true
-        }
+        }  
       }
 
       Text {
-        property string trackTitle: parent.player.trackTitle.length > 50
-          ? parent.player.trackTitle.substring(0, 50) + "..."
-          : parent.player.trackTitle
+        property string trackTitle: mprisModule.player.trackTitle.length > 50
+          ? mprisModule.player.trackTitle.substring(0, 50) + "..."
+          : mprisModule.player.trackTitle
 
-        property string trackArtist: parent.player.trackArtist.length > 20
-          ? parent.player.trackArtist.substring(0, 20) + "..."
-          : parent.player.trackArtist
+        property string trackArtist: mprisModule.player.trackArtist.length > 20
+          ? mprisModule.player.trackArtist.substring(0, 20) + "..."
+          : mprisModule.player.trackArtist
 
-        text: parent.player
+        text: mprisModule.player
           ? trackTitle + " - " + trackArtist
           : ""
 
@@ -66,6 +66,20 @@ Rectangle {
           italic: true
           bold: true
         }
+      }
+
+      TapHandler {
+        onTapped: mprisModule.player.togglePlaying()
+      }
+
+      TapHandler {
+        acceptedButtons: Qt.RightButton
+        onTapped: mprisModule.player.next()
+      }
+
+      HoverHandler {
+        id: mprisMouseArea
+        cursorShape: Qt.PointingHandCursor
       }
     }
 
@@ -111,6 +125,11 @@ Rectangle {
       TapHandler {
         onTapped: if (root.activeSink?.audio)
         root.activeSink.audio.muted = !root.isMuted
+        cursorShape: Qt.PointingHandCursor
+      }
+
+      HoverHandler {
+        id: volumeMouseArea
         cursorShape: Qt.PointingHandCursor
       }
     }
