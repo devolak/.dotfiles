@@ -1,7 +1,9 @@
 import QtQuick
+import Quickshell
 import Quickshell.Services.Mpris
 import Quickshell.Services.Pipewire
 import Quickshell.Services.UPower
+import Quickshell.Io
 import qs.Common
 
 Rectangle {
@@ -122,9 +124,17 @@ Rectangle {
         text: root.activeSink?.audio ? Math.round(root.volumeLevel * 100) + "%" : "--%"
       }
 
+      Process {
+        id: launchWiremix
+        command: [
+          "sh",
+          "-c",
+          "foot -a tuipopup wiremix"
+        ]
+      }
+
       TapHandler {
-        onTapped: if (root.activeSink?.audio)
-        root.activeSink.audio.muted = !root.isMuted
+        onTapped: launchWiremix.startDetached()
         cursorShape: Qt.PointingHandCursor
       }
 
