@@ -30,32 +30,42 @@ Rectangle {
       id: mprisModule
       spacing: 8
 
-      property string currentTrack: "No music playing"
+      property MprisPlayer player: Mpris.players.values.length > 0 ? Mpris.players.values[0] : null
 
-      Connections {
-        target: MprisService
-        onPlayerChanged: {
-          updateTrackInfo(MprisService.player);
+      Text {
+        text: parent.player.isPlaying
+          ? ""
+          : ""
+
+        color: Color.moduleText
+        font {
+          family: Style.barFontFamily
+          pixelSize: Style.barFontSize
+          italic: true
+          bold: true
         }
-      }
-
-      function updateTrackInfo(player) {
-        if (!player) {
-          currentTrack = "No music playing"
-          return;
-        }
-
-        player.trackTitleChanged.connect(function() {
-          currentTrack = player.trackTitle + " - " + player.trackArtist;
-        })
-
-        currentTrack = player.trackTitle + " - " + player.trackArtist;
       }
 
       Text {
-        anchors.centerIn: parent
-        text: currentTrack
+        property string trackTitle: parent.player.trackTitle.length > 50
+          ? parent.player.trackTitle.substring(0, 50) + "..."
+          : parent.player.trackTitle
+
+        property string trackArtist: parent.player.trackArtist.length > 20
+          ? parent.player.trackArtist.substring(0, 20) + "..."
+          : parent.player.trackArtist
+
+        text: parent.player
+          ? trackTitle + " - " + trackArtist
+          : ""
+
         color: Color.moduleText
+        font {
+          family: Style.barFontFamily
+          pixelSize: Style.barFontSize
+          italic: true
+          bold: true
+        }
       }
     }
 
