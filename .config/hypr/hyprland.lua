@@ -27,6 +27,11 @@ hl.monitor({
   scale = 1.5,
   bitdepth = 10,
   cm = "srgb",
+  -- sdr_eotf = "gamma22",
+  -- sdrbrightness = 1.0,
+  -- sdrsaturation = 1.0,
+  -- sdr_min_luminance = 0.0005,
+  -- sdr_max_luminance = 203,
 })
 
 hl.monitor({
@@ -49,13 +54,13 @@ hl.monitor({
 --- PROGRAMS ---
 ----------------
 
-menu = "fuzzel"
+menu = "noctalia msg panel-toggle launcher"
 lockscreen = "hyprlock"
 screenshot = "hyprshot"
-powermenu = "powermenu"
-quicksettings = "quicksettings"
-waybar = "waybar"
-barreload = "sleep 5 && pkill waybar && hyprctl dispatch 'hl.dsp.exec_cmd(waybar)'"
+-- powermenu = "powermenu"
+-- quicksettings = "quicksettings"
+-- waybar = "waybar"
+-- barreload = "sleep 5 && pkill waybar && hyprctl dispatch 'hl.dsp.exec_cmd(waybar)'"
 
 terminal = "foot"
 filemanager = terminal .. " yazi"
@@ -87,18 +92,22 @@ browser = "zen-browser"
 -----------------
 
 hl.on("hyprland.start", function ()
-  hl.exec_cmd("xrandr --output DP-6 --primary")
+  hl.exec_cmd("xrandr --output DP-3 --primary")
   hl.exec_cmd("hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'")
 
-  hl.exec_cmd("qs")
-  hl.exec_cmd("mako")
-  hl.exec_cmd("awww-daemon")
+  hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+  hl.exec_cmd("noctalia")
+  hl.exec_cmd("xhost +SI:localuser:root")
+
+  -- hl.exec_cmd("qs")
+  -- hl.exec_cmd("mako")
+  -- hl.exec_cmd("awww-daemon")
   -- hl.exec_cmd("hypridle")
-  hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
-  hl.exec_cmd("xwayland")
-  hl.exec_cmd("wl-paste --type text --watch cliphist store")
-  hl.exec_cmd("wl-paste --type image --watch cliphist store")
-  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  -- hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
+  -- hl.exec_cmd("xwayland")
+  -- hl.exec_cmd("wl-paste --type text --watch cliphist store")
+  -- hl.exec_cmd("wl-paste --type image --watch cliphist store")
+  -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 
@@ -218,16 +227,6 @@ hl.config({
   xwayland = {
     force_zero_scaling = true,
   },
-
-  -- cursor = {
-  --   no_hardware_cursors = 1,
-  --   no_break_fs_vrr = 1,
-  --   min_refresh_rate = 180,
-  -- },
-
-  -- debug = {
-  --   vfr = true,
-  -- }
 })
 
 
@@ -267,7 +266,7 @@ require("keybinds")
 ------------------------------
 
 hl.workspace_rule({ workspace = "1", monitor = monitor1, persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "2", monitor = monitor1, persistent = true,layout = "master" })
+hl.workspace_rule({ workspace = "2", monitor = monitor1, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "3", monitor = monitor1, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "4", monitor = monitor1, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "5", monitor = monitor1, persistent = true, layout = "master" })
@@ -281,7 +280,6 @@ hl.workspace_rule({ workspace = "9", monitor = monitor2, persistent = true, layo
 hl.workspace_rule({ workspace = "10", monitor = monitor2, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "31", monitor = monitor2, default_name = "discord", layout = "scrolling" })
 
-
 hl.workspace_rule({ workspace = "11", monitor = monitor3, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "32", monitor = monitor3, default_name = "music", layout = "master", on_created_empty = "youtube-music" })
 
@@ -289,7 +287,9 @@ hl.layer_rule({ match = { namespace = "selection" }, no_anim = true })
 
 -- hl.window_rule({ match = { class = terminal }, opacity = 0.90 })
 
-hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" })
+-- hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" })
+-- hl.window_rule({ match = { class = ".*" }, suppress_event = "fullscreen" })
+-- hl.window_rule({ match = { class = ".*" }, suppress_event = "activatefocus" })
 
 hl.window_rule({
   name = "popup",
@@ -328,12 +328,14 @@ hl.window_rule({
 
 hl.window_rule({
   name = "game_class",
-  match = { class = "^(steam_app_.*|steam_proton|streaming_client|gamescope|starcitizen.exe|Terraria.bin.x86_64|Slay the Spire 2|Minecraft.*)$" },
+  match = { class = "^(steam_app_.*|steam_proton|streaming_client|gamescope|starcitizen.exe|Terraria.bin.x86_64|Slay the Spire 2|Minecraft.*|dota2)$" },
 
   workspace = 30,
   fullscreen_state = 2,
   idle_inhibit = "always",
   content = "game",
+  render_unfocused = true,
+  confine_pointer = true,
 })
 
 hl.window_rule({
@@ -344,6 +346,8 @@ hl.window_rule({
   fullscreen_state = 2,
   idle_inhibit = "always",
   content = "game",
+  render_unfocused = true,
+  confine_pointer = true,
 })
 
 hl.window_rule({
@@ -352,6 +356,7 @@ hl.window_rule({
 
   workspace = 30,
   idle_inhibit = "always",
+  render_unfocused = true,
 })
 
 hl.window_rule({
@@ -370,7 +375,7 @@ hl.window_rule({
 
 hl.window_rule({
   name = "game_launcher",
-  match = { class = "^(steam|twintaillauncher|bolt-launcher)" },
+  match = { class = "^(steam|twintaillauncher|bolt-launcher|heroic)" },
 
   workspace = 29,
 })
