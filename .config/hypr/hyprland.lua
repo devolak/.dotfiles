@@ -336,6 +336,7 @@ hl.window_rule({
   content = "game",
   render_unfocused = true,
   confine_pointer = true,
+  immediate = true,
 })
 
 hl.window_rule({
@@ -348,6 +349,7 @@ hl.window_rule({
   content = "game",
   render_unfocused = true,
   confine_pointer = true,
+  immediate = true,
 })
 
 hl.window_rule({
