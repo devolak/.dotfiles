@@ -13,6 +13,8 @@ return {
           "html",
           "cssls",
           "hyprls",
+          "qmlls",
+          "texlab",
         },
       },
     },

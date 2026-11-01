@@ -14,6 +14,8 @@ return {
       "html",
       "css",
       "hyprlang",
+      "qmljs",
+      "latex",
     }
 
     ts.setup({})
