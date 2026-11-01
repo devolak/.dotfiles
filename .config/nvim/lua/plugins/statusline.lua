@@ -14,10 +14,10 @@ return {
       lualine_c = { { "filename", path = 1, shorting_target = 40 } },
 
       lualine_x = {
-        {
-          require("noice").api.status.command.get,
-          cond = require("noice").api.status.command.has,
-        },
+        -- {
+        --   require("noice").api.status.command.get,
+        --   cond = require("noice").api.status.command.has,
+        -- },
         "encoding",
         "fileformat",
         "filetype"
