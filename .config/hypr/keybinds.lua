@@ -5,15 +5,20 @@
 local mainMod = "SUPER"
 local uwsm = "uwsm app -- "
 
-local function layout_aware_dispatch(actions)
-  local active_ws = hl.get_active_workspace()
+local function layout_bind(bind_table)
+  return function ()
+    local workspace = hl.get_active_special_workspace() or
+                      hl.get_active_workspace()
 
-  if active_ws and active_ws.tiled_layout == "master" and actions.master ~= nil then
-    hl.dispatch(hl.dsp.layout(actions.master))
-  elseif active_ws and active_ws.tiled_layout == "monocle" and actions.monocle ~= nil then
-    hl.dispatch(hl.dsp.layout(actions.monocle))
-  elseif active_ws and active_ws.tiled_layout == "scrolling" and actions.scrolling ~= nil then
-    hl.dispatch(hl.dsp.layout(actions.scrolling))
+    if not workspace then
+      return
+    end
+
+    local layout = workspace.tiled_layout
+
+    if bind_table[layout] then
+      hl.dispatch(bind_table[layout])
+    end
   end
 end
 
@@ -52,28 +57,59 @@ end)
 
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + R", hl.dsp.window.float({ action = "toggle" }))
--- hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 -- hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen_state({ internal = 2, client = 2, action = "toggle" }))
 
 -- Window focus
-hl.bind(mainMod .. " + J", function() layout_aware_dispatch({ master = "cyclenext", monocle = "cyclenext", scrolling = "move +col" }) end)
-hl.bind(mainMod .. " + K", function() layout_aware_dispatch({ master = "cycleprev", monocle = "cycleprev", scrolling = "move -col" }) end)
+hl.bind(mainMod .. " + J", layout_bind({
+  master = hl.dsp.layout("cyclenext"),
+  monocle = hl.dsp.layout("cyclenext"),
+  scrolling = hl.dsp.layout("move +col"),
+}))
+
+hl.bind(mainMod .. " + K", layout_bind({
+  master = hl.dsp.layout("cycleprev"),
+  monocle = hl.dsp.layout("cycleprev"),
+  scrolling = hl.dsp.layout("move -col"),
+}))
 
 -- Window manipulation
-hl.bind(mainMod .. " + SHIFT + J", function() layout_aware_dispatch({ master = "swapnext", scrolling = "swapcol r" }) end)
-hl.bind(mainMod .. " + SHIFT + K", function() layout_aware_dispatch({ master = "swapprev", scrolling = "swapcol l" }) end)
-hl.bind(mainMod .. " + H", function() layout_aware_dispatch({ master = "mfact -0.025", scrolling = "colresize -conf" }) end)
-hl.bind(mainMod .. " + L", function() layout_aware_dispatch({ master = "mfact +0.025", scrolling = "colresize +conf" }) end)
+hl.bind(mainMod .. " + SHIFT + J", layout_bind({
+  master = hl.dsp.layout("swapnext"),
+  scrolling = hl.dsp.layout("swapcol r"),
+}))
+
+hl.bind(mainMod .. " + SHIFT + K", layout_bind({
+  master = hl.dsp.layout("swapprev"),
+  scrolling = hl.dsp.layout("swapcol l"),
+}))
+
+hl.bind(mainMod .. " + H", layout_bind({
+  master = hl.dsp.layout("mfact -0.025"),
+  scrolling = hl.dsp.layout("colresize -conf"),
+}))
+
+hl.bind(mainMod .. " + L", layout_bind({
+  master = hl.dsp.layout("mfact +0.025"),
+  scrolling = hl.dsp.layout("colresize +conf"),
+}))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Layout specific binds
-hl.bind(mainMod .. " + I", function() layout_aware_dispatch({ master = "swapwithmaster" }) end)
-hl.bind(mainMod .. " + O", function() layout_aware_dispatch({ master = "orientationcycle left center top" }) end)
-hl.bind(mainMod .. " + G", function() layout_aware_dispatch({ master = "focusmaster" }) end)
+hl.bind(mainMod .. " + I", layout_bind({
+  master = hl.dsp.layout("swapwithmaster"),
+}))
+
+hl.bind(mainMod .. " + O", layout_bind({
+  master = hl.dsp.layout("orientationcycle left center top"),
+}))
+
+hl.bind(mainMod .. " + G", layout_bind({
+  master = hl.dsp.layout("focusmaster"),
+}))
 
 
 ---------------------
