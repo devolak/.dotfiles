@@ -265,6 +265,27 @@ require("keybinds")
 --- WORKSPACES AND WINDOWS ---
 ------------------------------
 
+local workspace_programs = {
+    ["31"] = { "uwsm app -- discord" },
+    ["32"] = { "uwsm app -- youtube-music" },
+    -- ["6"] = { "kitty",   { fullscreen = true } },
+}
+
+hl.on("workspace.created", function(ws)
+    if ws.is_empty then return end
+
+    local program = workspace_programs[ws.name]
+    if program == nil then return end
+
+    local cmd, rules = table.unpack(program)
+    -- shallow-copy the rules table so we can add the workspace to it
+    local rules2 = {}
+    for k, v in rules do rules2[k] = v end
+    rules2.workspace = ws.name .. " silent"
+    -- run it!
+    hl.exec_cmd(cmd, rules2)
+end)
+
 hl.workspace_rule({ workspace = "1", monitor = monitor1, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "2", monitor = monitor1, persistent = true, layout = "master" })
 hl.workspace_rule({ workspace = "3", monitor = monitor1, persistent = true, layout = "master" })
@@ -281,7 +302,7 @@ hl.workspace_rule({ workspace = "10", monitor = monitor2, persistent = true, lay
 hl.workspace_rule({ workspace = "31", monitor = monitor2, default_name = "discord", layout = "scrolling" })
 
 hl.workspace_rule({ workspace = "11", monitor = monitor3, persistent = true, layout = "master" })
-hl.workspace_rule({ workspace = "32", monitor = monitor3, default_name = "music", layout = "master", on_created_empty = "youtube-music" })
+hl.workspace_rule({ workspace = "32", monitor = monitor3, default_name = "music", layout = "master" })
 
 hl.layer_rule({ match = { namespace = "selection" }, no_anim = true })
 
@@ -336,7 +357,7 @@ hl.window_rule({
   content = "game",
   render_unfocused = true,
   confine_pointer = true,
-  immediate = true,
+  -- immediate = true,
 })
 
 hl.window_rule({
@@ -349,7 +370,7 @@ hl.window_rule({
   content = "game",
   render_unfocused = true,
   confine_pointer = true,
-  immediate = true,
+  -- immediate = true,
 })
 
 hl.window_rule({
