@@ -9,7 +9,9 @@ require("which-key").setup({
 })
 
 require("which-key").add({
-  { "<leader>f", group = "find" },
+  { "<leader>f", group = "Files" },
+  { "<leader>s", group = "Search" },
+  { "<leader>g", group = "Git" },
 })
 
 -- vim.keymap.set("n", "<leader>?", function()
