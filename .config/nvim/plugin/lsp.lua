@@ -7,7 +7,7 @@ vim.pack.add({
 
 require("mason").setup()
 
-vim.keymap.set("n", "<leader>m", function()
+vim.keymap.set("n", "<leader>M", function()
   vim.cmd("Mason")
 end, { desc = "Mason" })
 
